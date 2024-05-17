@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping</title>
+    <link rel="shortcut icon" type="image/png" href="image/logo.webp" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="boot/bootstrap.min.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-md navbar-dark fixed-top"
+      style="background-color: #c4dfdf"
+    >
+      <div class="container-fluid">
+        <a href="index.html"
+          ><img src="image/logo.webp" alt="" width="40px" style="color: red"
+        /></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-md-0 ul"
+            style="margin-left: 90px"
+          >
+            <li class="nav-item px-3">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link active" href="#">Link</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link active" href="details.html" target="_blank">Details</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link active" href="#">Content</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link active" href="card.html" target="_blank">Card</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="favorate.html" target="_blank">Favourite</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <div class="settings">
+              <li><a href="#" id="user"></a></li>
+              <li class="shopping-cart">
+                <i class="fas fa-shopping-cart icon-card"></i>
+                <span class="badge"></span>
+                <a>
+                  <button
+                    class="btn btn-success mx-5"
+                    type="button"
+                    style="background-color: #77b0aa; border: 0"
+                    id="log-out"
+                  >
+                    Log Out
+                  </button></a
+                >
+              </li>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="show">
+       <h2 class="show-title">Your Cart</h2>
+      
+       <strong>Total : </strong>
+       <span class="total"></span>
+       <div></div>
+       <div class="clossandcheck">
+        <div>
+          <button type="button" class="btn btn-outline-dark closs">
+            Close
+          </button>
+        </div>
+        <div>
+          <a href="card.html"
+            ><button type="button" class="btn btn-outline-dark check">
+              Checkout
+            </button>
+            </a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <div class="container home">
+      
+      <div class="inputs">
+        <input type="search" placeholder="Search By Name" id="search" />
+        <select class="select" id="categorySelect">
+          <option hidden>Search By Category</option>
+          <option class="jeans">ALL</option>
+          <option class="jeans">Jeans</option>
+          <option class="Shoes">Shoes</option>
+          <option  class="T-shirt">T-shirt</option>
+          <option class="Shorts">Shorts</option>
+        </select>
+      </div>
+        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <div style=" color: #77b0aa; cursor: pointer;"><h1>Shopping</h1></div>
+
+        <div class="product-item col-sm-12 row mx-2 my-5 aaa"></div>
+      </div>
+    
+
+   <script src="boot/bootstrap.bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/user.js"></script>
+  </body>
+</html>
