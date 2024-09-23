@@ -17,7 +17,7 @@ if(username.value === "" || password.value === ""){
            window.location = "index.html"
         }, 1500)
     }else{
-        alert("Your Nmae Or Password Is Wrong")
+        alert("Your Name Or Password Is Wrong")
     }
 
 })

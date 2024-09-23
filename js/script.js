@@ -2,6 +2,7 @@ let allproducts = document.querySelector(".product-item");
 let productincard = localStorage.getItem("ProductsInCart");
 let product = JSON.parse(localStorage.getItem("products"));
 let drawItems;
+
 (drawItems = function (products = []) {
   let y = products.map((item) => {
     if (item.id === 1 || item.id === 18 || item.id === 24 || item.id === 29) {
@@ -121,9 +122,13 @@ if (addedItem.length) {
         </div>
       </div>
       <div class="quntatity">
-        <i class="fas fa-minus-circle minus" onclick="changequantity(${item.id}, 'decrease')"></i>
+        <i class="fas fa-minus-circle minus" onclick="changequantity(${
+          item.id
+        }, 'decrease')"></i>
         <span class="number">${item.qtr}</span>
-        <i class="fas fa-plus-circle plus" onclick="changequantity(${item.id}, 'increase')"></i>
+        <i class="fas fa-plus-circle plus" onclick="changequantity(${
+          item.id
+        }, 'increase')"></i>
       </div>
     </div>`;
   });
@@ -166,26 +171,33 @@ if (localStorage.getItem("username")) {
           </div>
         </div>
         <div class="quntatity">
-          <i class="fas fa-minus-circle minus" onclick="changequantity(${item.id}, 'decrease')"></i>
+          <i class="fas fa-minus-circle minus" onclick="changequantity(${
+            item.id
+          }, 'decrease')"></i>
           
           <span class="number">${item.qtr} </span>
-          <i class="fas fa-plus-circle plus" onclick="changequantity(${item.id}, 'increase')"></i>
+          <i class="fas fa-plus-circle plus" onclick="changequantity(${
+            item.id
+          }, 'increase')"></i>
         </div>
       </div>`;
     });
   }
 
   function updateTotalPrice() {
-    let totalprice = allqt.reduce((acc, item) => acc + item.price * item.qtr, 0);
+    let totalprice = allqt.reduce(
+      (acc, item) => acc + item.price * item.qtr,
+      0
+    );
     total.innerHTML = totalprice + " EGP";
   }
 
   window.changequantity = function (id, action) {
     let item = allqt.find((i) => i.id === id);
     if (item) {
-      if (action === 'increase') {
+      if (action === "increase") {
         item.qtr += 1;
-      } else if (action === 'decrease' && item.qtr > 1) {
+      } else if (action === "decrease" && item.qtr > 1) {
         item.qtr -= 1;
       }
       updateCartDisplay();
@@ -195,7 +207,6 @@ if (localStorage.getItem("username")) {
   };
 
   updateTotalPrice(); // Initial total price update on page load
-
 } else {
   window.location = "register.html";
 }
@@ -213,9 +224,9 @@ iconcard.addEventListener("click", opretor);
 function opretor() {
   if (cardshow.innerHTML != "") {
     if (show.style.display == "block") {
-      show.style.display = "none";
+      show.style.display = "none"; // إخفاء العنصر
     } else {
-      style.display = "block";
+      show.style.display = "block"; // إظهار العنصر
     }
   }
 }
@@ -261,26 +272,27 @@ function search(title, myArray) {
 }
 
 /******************************************************* *********************************/
- // Retrieve the select element
- let categorySelect = document.getElementById("categorySelect");
-      
- categorySelect.addEventListener("change", function() {
-  
-   if (categorySelect.value === "Jeans") {
-    
-     let jeansProductsHTML = product
-       .filter(item => [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(item.id))
-       .map(item => `
+// Retrieve the select element
+let categorySelect = document.getElementById("categorySelect");
+
+categorySelect.addEventListener("change", function () {
+  if (categorySelect.value === "Jeans") {
+    let jeansProductsHTML = product
+      .filter((item) =>
+        [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(item.id)
+      )
+      .map(
+        (item) => `
        <div class="card-cont" style="width: 18rem; hight:15rem">
        <img src="${item.Image}" class="card-img-top" alt="..." height="450px">
        <div class="card-body desc-card">
          <h5 class="card-title" onClick="save(${item.id})">${item.title}</h5>
-         <h6 id="price">${item.price}</h6>
+         <h6 id="price">${item.price} EGP</h6>
          <div class="space">
          <div>
           <a class="btn dd" id="add-to-card" onClick = "addtocard(${
-  item.id
-})">Add To Card</a>
+          item.id
+        })">Add To Card</a>
            </div>
           <div>
           <i class="fa fa-heart" aria-hidden="true" style="color: ${
@@ -291,24 +303,25 @@ function search(title, myArray) {
           </div>
        </div>
      </div>`
-       )
-       .join("");
+      )
+      .join("");
 
-     allproducts.innerHTML = jeansProductsHTML;
-   }else if (categorySelect.value === "Shoes") {
+    allproducts.innerHTML = jeansProductsHTML;
+  } else if (categorySelect.value === "Shoes") {
     let ShoesProductsHTML = product
-    .filter(item => [19, 20, 21, 22, 23].includes(item.id))
-    .map(item => `
+      .filter((item) => [19, 20, 21, 22, 23].includes(item.id))
+      .map(
+        (item) => `
     <div class="card-cont" style="width: 18rem; hight:15rem">
     <img src="${item.Image}" class="card-img-top" alt="..." height="450px">
     <div class="card-body desc-card">
       <h5 class="card-title" onClick="save(${item.id})">${item.title}</h5>
-      <h6 id="price">${item.price}</h6>
+      <h6 id="price">${item.price} EGP</h6>
       <div class="space">
       <div>
           <a class="btn dd" id="add-to-card" onClick = "addtocard(${
-item.id
-})">Add To Card</a>
+          item.id
+        })">Add To Card</a>
         </div>
        <div>
        <i class="fa fa-heart" aria-hidden="true" style="color: ${
@@ -319,24 +332,25 @@ item.id
        </div>
     </div>
   </div>`
-    )
-    .join(""); 
-  
-  allproducts.innerHTML = ShoesProductsHTML;
-   }else if (categorySelect.value === "T-shirt"){
+      )
+      .join("");
+
+    allproducts.innerHTML = ShoesProductsHTML;
+  } else if (categorySelect.value === "T-shirt") {
     let TshirtProductsHTML = product
-    .filter(item => [30, 31, 32, 33 , 34].includes(item.id))
-    .map(item => `
+      .filter((item) => [30, 31, 32, 33, 34].includes(item.id))
+      .map(
+        (item) => `
     <div class="card-cont" style="width: 18rem; hight:15rem">
     <img src="${item.Image}" class="card-img-top" alt="..." height="450px">
     <div class="card-body desc-card">
       <h5 class="card-title" onClick="save(${item.id})">${item.title}</h5>
-      <h6 id="price">${item.price}</h6>
+      <h6 id="price">${item.price} EGP</h6>
       <div class="space">
       <div>
           <a class="btn dd" id="add-to-card" onClick = "addtocard(${
-item.id
-})">Add To Card</a>
+          item.id
+        })">Add To Card</a>
         </div>
        <div>
        <i class="fa fa-heart" aria-hidden="true" style="color: ${
@@ -347,24 +361,25 @@ item.id
        </div>
     </div>
   </div>`
-    )
-    .join(""); 
- 
-  allproducts.innerHTML = TshirtProductsHTML;
-   }else if (categorySelect.value === "Shorts"){
+      )
+      .join("");
+
+    allproducts.innerHTML = TshirtProductsHTML;
+  } else if (categorySelect.value === "Shorts") {
     let ShortsProductsHTML = product
-    .filter(item => [25, 26, 27, 28].includes(item.id))
-    .map(item => `
+      .filter((item) => [25, 26, 27, 28].includes(item.id))
+      .map(
+        (item) => `
     <div class="card-cont" style="width: 18rem; hight:15rem">
     <img src="${item.Image}" class="card-img-top" alt="..." height="450px">
     <div class="card-body desc-card">
       <h5 class="card-title" onClick="save(${item.id})">${item.title}</h5>
-      <h6 id="price">${item.price}</h6>
+      <h6 id="price">${item.price} EGP</h6>
       <div class="space">
       <div>
           <a class="btn dd" id="add-to-card" onClick = "addtocard(${
-item.id
-})">Add To Card</a>
+          item.id
+        })">Add To Card</a>
         </div>
        <div>
        <i class="fa fa-heart" aria-hidden="true" style="color: ${
@@ -375,39 +390,43 @@ item.id
        </div>
     </div>
   </div>`
-    )
-    .join("");
+      )
+      .join("");
 
-  allproducts.innerHTML = ShortsProductsHTML;
-} else if (categorySelect.value === "ALL") {
+    allproducts.innerHTML = ShortsProductsHTML;
+  } else if (categorySelect.value === "ALL") {
+    let numbers = [];
+    for (let i = 1; i <= 34; i++) {
+      numbers.push(i);
+    }
 
-let numbers = [];
-for (let i = 1; i <= 34; i++) {
-  numbers.push(i);
-}
-
-console.log(numbers);
-let allProductsHTML = product
-  .filter(item => numbers.includes(item.id))
-  .map(item => {
-    if (item.id === 1 || item.id === 18 || item.id === 24 || item.id === 29) {
-      return `
+    console.log(numbers);
+    let allProductsHTML = product
+      .filter((item) => numbers.includes(item.id))
+      .map((item) => {
+        if (
+          item.id === 1 ||
+          item.id === 18 ||
+          item.id === 24 ||
+          item.id === 29
+        ) {
+          return `
       <div class="card-cont" style="width: 21rem;">
         <video src="${item.video}" height="450px" class="card-img-top" alt="..." muted autoplay loop>
       </div>
       `;
-    } else {
-      return `
+        } else {
+          return `
       <div class="card-cont" style="width: 18rem; hight:15rem">
       <img src="${item.Image}" class="card-img-top" alt="..." height="450px">
       <div class="card-body desc-card">
         <h5 class="card-title" onClick="save(${item.id})">${item.title}</h5>
-        <h6 id="price">${item.price}</h6>
+        <h6 id="price">${item.price} EGP</h6>
         <div class="space">
         <div>
           <a class="btn dd" id="add-to-card" onClick = "addtocard(${
- item.id
-})">Add To Card</a>
+            item.id
+          })">Add To Card</a>
           </div>
          <div>
          <i class="fa fa-heart" aria-hidden="true" style="color: ${
@@ -419,11 +438,9 @@ let allProductsHTML = product
       </div>
     </div>
       `;
-    }
-  })
-  .join("");
-allproducts.innerHTML = allProductsHTML;
-}
- });
-
-
+        }
+      })
+      .join("");
+    allproducts.innerHTML = allProductsHTML;
+  }
+});
